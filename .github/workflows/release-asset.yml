@@ -1,0 +1,32 @@
+# When the maintainer publishes a GitHub Release, attach the actual unpacked
+# Chrome extension ZIP. This avoids confusing GitHub's generated source archives
+# with the installable extension package.
+name: Attach Chrome extension to release
+on:
+  release:
+    types: [published]
+permissions:
+  contents: write
+jobs:
+  attach:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the release tag
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Validate and package extension
+        run: |
+          python scripts/verify_release.py
+          python scripts/package_release.py
+      - name: Attach extension ZIP to GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          gh release upload "$RELEASE_TAG" dist/markflow-v2.0-extension-only.zip --clobber

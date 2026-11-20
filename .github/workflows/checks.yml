@@ -1,0 +1,54 @@
+name: Source and browser checks
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Check source syntax
+        run: |
+          node --check background.js
+          node --check content.js
+          node --check library.js
+          node --check docs/site.js
+      - name: Check manifest, repository files, and release ZIP
+        run: |
+          python scripts/verify_release.py
+          python scripts/package_release.py
+      - name: Run IndexedDB message and migration contract tests
+        run: |
+          node tests/test_background.cjs
+          node tests/test_background_v16.cjs
+          node tests/test_background_v20.cjs
+      - uses: actions/upload-artifact@v4
+        with:
+          name: markflow-v2.0-extension-only
+          path: dist/markflow-v2.0-extension-only.zip
+          if-no-files-found: error
+  browser-ui:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install Playwright and Chromium
+        run: |
+          python -m pip install playwright==1.56.0 beautifulsoup4
+          python -m playwright install --with-deps chromium
+      - name: Browser UI regression tests (mock extension messaging)
+        run: |
+          python tests/test_v15.py
+          python tests/test_v16.py
+          python tests/test_v20.py
+          python tests/test_website.py

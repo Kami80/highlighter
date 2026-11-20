@@ -1,0 +1,21 @@
+# Development/local browser profiles — never commit personal annotations
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+__pycache__/
+.pytest_cache/
+.env
+.env.*
+*.pem
+*.key
+*.crx
+*.zip
+*.sqlite
+*.sqlite3
+*.db
+*.db-wal
+*.db-shm
+playwright-report/
+test-results/
+coverage/

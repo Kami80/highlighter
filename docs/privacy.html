@@ -1,0 +1,35 @@
+<!doctype html><html lang="en" data-theme="light"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#f7f6f4"><meta name="description" content="Privacy practices for Markflow, the local-first Chrome extension"><title>Privacy · Markflow 2.0</title><link rel="icon" href="assets/icon.png"><link rel="stylesheet" href="site.css"><script>try{var t=localStorage.getItem('markflow-website-theme');if(t==='dark'||t==='light')document.documentElement.dataset.theme=t;}catch(e){}</script></head><body>
+<a class="skip-link" href="#main">Skip to content</a><div class="nav-wrap"><header class="nav-glass container"><a class="brand" href="./"><span class="brand-icon"><img src="assets/icon.png" width="32" height="32" alt=""></span>markflow<span class="brand-period">.</span><span class="brand-tag">v2.0</span></a><a class="button button-dark button-small" href="./">← Back to website</a></header></div>
+<main class="policy-main" id="main"><div class="policy-hero"><div class="section-eyebrow">YOUR DATA, YOUR CHOICE</div><h1>Privacy first.<br>By design.</h1><p>Updated November 19, 2026 · Applies to Markflow v2.0.0</p></div><article class="policy-paper">
+
+<p>Markflow is a Chrome extension for creating highlights, comments, replies, sticky notes, image-region comments, and drawings on webpages. The extension is designed to work locally, without a Markflow account or cloud service.</p>
+
+
+<h2>Data handled</h2>
+<p>Markflow accesses the URLs of webpages you visit and processes selected text and surrounding text anchors, user-written comments and replies, sticky notes, drawings, colors, formatting, timestamps and annotation preferences.</p>
+
+
+<h2>Where it is stored</h2>
+<p>Annotations are stored in IndexedDB belonging to the extension's origin, on the local Chrome profile. Chrome extension local storage is used for visibility and layer preferences and for migrating previously saved annotations. Personal collections and annotation layers are stored locally. JSON backup files are downloaded only when requested by the user. The extension does not intentionally upload your annotations to a Markflow server or sync them across devices.</p>
+
+
+<h2>Data sharing</h2>
+<p>Markflow does not include third-party advertising or analytics SDKs. The content script runs on supported websites and interacts with the page locally. The websites you browse may have their own tracking or network behavior, which is not controlled by Markflow.</p>
+
+
+<h2>Website exclusions and safer editing</h2>
+<p>You can pause Markflow on exact website hostnames from the local Privacy Center. When those pages are refreshed, the extension does not load saved annotations for those hosts. Exclusions do not change Chrome's host access permission. When separate tabs edit the same annotation, the extension detects concurrent changes and avoids silently overwriting a saved version; a local JSON safety copy can be downloaded.</p>
+
+
+<h2>Permissions</h2>
+<p>Access to HTTP/HTTPS pages is needed to display the annotation toolbar, follow selected text, and restore annotations on supported pages. The Chrome storage permission supports local settings and migration.</p>
+
+
+<h2>Deletion and security</h2>
+<p>You can remove annotations using the manager. Removing the extension or clearing Chrome profile data may erase all notes. Markflow v2.0 provides a manual JSON backup/restore feature in the Library dashboard but no cloud backup or HTML export. Save backup copies securely because they may contain private comments and excerpts of webpages.</p>
+
+
+<h2>Contact and corrections</h2>
+<p>For questions, feature requests and corrections to this policy, use the <strong>Issues</strong> tab on the GitHub repository from which you downloaded Markflow.</p>
+
+</article></main><footer class="site-footer container"><div class="footer-left"><a href="./" class="footer-brand"><img src="assets/icon.png" width="25" height="25" alt="">markflow<span>.</span></a><p>Free · Open source · Local-first</p></div><div class="footer-links"><div><strong>Project</strong><a href="https://github.com/kami80/highlighter">Source code</a><a href="https://github.com/kami80/highlighter/issues">Issues</a><a href="./">Home</a></div></div><div class="footer-bottom">Your annotations are stored in Chrome's local extension storage.<span>Not affiliated with Apple or Google.</span></div></footer></body></html>
