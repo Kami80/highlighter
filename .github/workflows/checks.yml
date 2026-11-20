@@ -36,7 +36,7 @@ jobs:
           path: dist/markflow-v2.0-extension-only.zip
           if-no-files-found: error
   browser-ui:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
